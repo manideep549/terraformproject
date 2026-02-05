@@ -1,6 +1,6 @@
 resource "aws_vpc" "this" {
   cidr_block = var.vpc_cidr
-  tags = { Name = "tf-vpc" }
+  tags       = { Name = "tf-vpc" }
 }
 
 resource "aws_subnet" "public" {
@@ -8,7 +8,7 @@ resource "aws_subnet" "public" {
   cidr_block              = var.subnet_cidr
   availability_zone       = var.az
   map_public_ip_on_launch = true
-  tags = { Name = "tf-public-subnet" }
+  tags                    = { Name = "tf-public-subnet" }
 }
 
 resource "aws_internet_gateway" "igw" {
