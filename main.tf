@@ -14,5 +14,5 @@ module "ec2" {
   source    = "./modules/ec2"
   subnet_id = module.vpc.subnet_id
   sg_id     = module.sg.sg_id
-  # key_name  = "my-keypair"
+  key_name  = "my-keypair"
 }
