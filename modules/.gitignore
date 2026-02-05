@@ -1,0 +1,6 @@
+# SSH keys
+*.pem
+*.key
+*.pub
+.ssh/
+my-keypair*
