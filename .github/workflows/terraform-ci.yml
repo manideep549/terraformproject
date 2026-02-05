@@ -11,6 +11,10 @@ jobs:
     name: Terraform Validation
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        shell: bash
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,15 +23,22 @@ jobs:
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.6.6
+          terraform_wrapper: false
 
       - name: Terraform Init
         run: terraform init -backend=false
 
       - name: Terraform Format Check
-        run: terraform fmt -check -recursive
+        run: |
+          echo "Running terraform fmt check..."
+          terraform fmt -check -recursive || (
+            echo "::error::Terraform files are not formatted. Run 'terraform fmt -recursive' locally."
+            terraform fmt -check -recursive -diff
+            exit 1
+          )
 
       - name: Terraform Validate
-        run: terraform validate
+        run: terraform validate -no-color
 
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -no-color
