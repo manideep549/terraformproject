@@ -15,11 +15,19 @@ module "sg" {
   subnet_id = module.vpc.subnet_id
   sg_id     = module.sg.sg_id
   key_name  = "my-keypair"
-} **/
+} 
 
 module "ec2" {
   source    = "./modules/ec2"
   subnet_id = module.vpc.subnet_id
   sg_id     = module.sg.sg_id
   key_name  = aws_key_pair.ec2.key_name
+} **/
+
+module "ec2" {
+  source    = "./modules/ec2"
+  subnet_id = module.vpc.subnet_id
+  sg_id     = module.sg.sg_id
+
+  key_name = var.create_key ? aws_key_pair.ec2[0].key_name : var.existing_key_name
 }
