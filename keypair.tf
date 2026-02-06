@@ -19,6 +19,6 @@ resource "aws_key_pair" "ec2" {
 } **/
 resource "aws_key_pair" "ec2" {
   key_name   = "my-existing-key"
-  public_key = file("${path.module}/keys/ec2-key.pub")
+  public_key = file("${path.module}/modules/keys/my-keypair.pub")
 }
 
