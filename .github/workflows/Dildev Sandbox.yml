@@ -3,7 +3,7 @@ name: Dildev Sandbox
 on:
   push: 
     branches:
-      - Release_PI26_2_4
+      - repobranch
   workflow_dispatch:
 
 jobs:
