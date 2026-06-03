@@ -13,7 +13,7 @@ jobs:
     environment: dildev-sandbox
     env:
       SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL_dildev }}
-      ORG_ALIAS: rmteam@mbcrm.com.dildev
+     ORG_ALIAS: Manideep org
     container:
       image: salesforce/cli:2.123.1-full
 
